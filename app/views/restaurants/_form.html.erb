@@ -21,6 +21,16 @@
     <%= form.text_field :location %>
   </div>
 
+  <div class="field">
+    <%= form.label :upvotes %>
+    <%= form.number_field :upvotes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :downvotes %>
+    <%= form.number_field :downvotes %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

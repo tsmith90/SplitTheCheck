@@ -7,6 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Location</th>
+      <th>Upvotes</th>
+      <th>Downvotes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.location %></td>
+        <td><%= restaurant.upvotes %></td>
+        <td><%= restaurant.downvotes %></td>
         <td><%= link_to 'Show', restaurant %></td>
         <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
         <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>

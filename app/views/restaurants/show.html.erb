@@ -10,5 +10,15 @@
   <%= @restaurant.location %>
 </p>
 
+<p>
+  <strong>Upvotes:</strong>
+  <%= @restaurant.upvotes %>
+</p>
+
+<p>
+  <strong>Downvotes:</strong>
+  <%= @restaurant.downvotes %>
+</p>
+
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
