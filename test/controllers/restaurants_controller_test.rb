@@ -37,12 +37,4 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     patch restaurant_url(@restaurant), params: { restaurant: { downvotes: @restaurant.downvotes, location: @restaurant.location, name: @restaurant.name, upvotes: @restaurant.upvotes } }
     assert_redirected_to restaurant_url(@restaurant)
   end
-
-  test "should destroy restaurant" do
-    assert_difference('Restaurant.count', -1) do
-      delete restaurant_url(@restaurant)
-    end
-
-    assert_redirected_to restaurants_url
-  end
 end

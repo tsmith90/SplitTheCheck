@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[ show edit update ]
 
   # GET /restaurants or /restaurants.json
   def index
@@ -44,15 +44,6 @@ class RestaurantsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /restaurants/1 or /restaurants/1.json
-  def destroy
-    @restaurant.destroy
-    respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: "Restaurant was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
