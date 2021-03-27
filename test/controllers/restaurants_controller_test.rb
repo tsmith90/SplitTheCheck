@@ -39,7 +39,7 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update restaurant" do
     patch restaurant_url(@restaurant), params: { restaurant: { downvotes: @restaurant.downvotes, location: @restaurant.location, name: @restaurant.name, upvotes: @restaurant.upvotes } }
-    assert_redirected_to restaurant_url(@restaurant)
+    assert_redirected_to restaurants_path
   end
 
   test "should show upvotes" do

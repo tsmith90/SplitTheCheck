@@ -1,16 +1,17 @@
 <% if notice %>
+  <br>
   <aside id="notice"><%= notice %></aside>
+  <br>
 <% end %>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Name (Edit)</th>
       <th>Location</th>
       <th>Will Split</th>
       <th>Won't Split</th>
-      <th>Restaurant Details</th>
-      <th>Edit Restaurant</th>
+      <th></th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -18,12 +19,11 @@
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr class="rows">
-        <td><%= restaurant.name %></td>
+        <td><%= link_to restaurant.name, edit_restaurant_path(restaurant) %></td>
         <td><%= restaurant.location %></td>
         <td><%= restaurant.upvotes %></td>
         <td><%= restaurant.downvotes %></td>
-        <td><%= link_to 'Details', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Vote', restaurant %></td>
       </tr>
     <% end %>
   </tbody>

@@ -23,20 +23,6 @@
     <%= form.text_area :location, id: :resturant_location, rows: 10, cols: 40 %>
   </div>
 
-  <div class="field">
-    <%= form.label :upvotes, 'Will split the check' %>
-    <%= form.hidden_field :upvotes, :value => 12 %>
-    <br>
-    <%= form.submit 'upvote' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :downvotes, 'Will not split the check' %>
-    <%= form.hidden_field :downvotes, value: 10 %>
-    <br>
-    <%= form.submit 'downvote' %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
