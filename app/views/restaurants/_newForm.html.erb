@@ -24,17 +24,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :upvotes, 'Will split the check' %>
-    <%= form.hidden_field :upvotes, :value => 12 %>
-    <br>
-    <%= form.submit 'upvote' %>
+    <%= form.hidden_field :upvotes, :value => 0 %>
   </div>
 
   <div class="field">
-    <%= form.label :downvotes, 'Will not split the check' %>
-    <%= form.hidden_field :downvotes, value: 10 %>
-    <br>
-    <%= form.submit 'downvote' %>
+    <%= form.hidden_field :downvotes, value: 0 %>
   </div>
 
   <div class="actions">
