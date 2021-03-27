@@ -3,6 +3,7 @@ require 'test_helper'
 class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @restaurant = restaurants(:one)
+    @restaurant2 = restaurants(:two)
   end
 
   test "should get index" do
@@ -39,5 +40,31 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   test "should update restaurant" do
     patch restaurant_url(@restaurant), params: { restaurant: { downvotes: @restaurant.downvotes, location: @restaurant.location, name: @restaurant.name, upvotes: @restaurant.upvotes } }
     assert_redirected_to restaurant_url(@restaurant)
+  end
+
+  test "should show upvotes" do
+    assert_equal(@restaurant.upvotes, 10)
+    assert_equal(@restaurant2.upvotes, 1)
+  end
+
+  test "should show downvotes" do
+    assert_equal(@restaurant.downvotes, 1)
+    assert_equal(@restaurant2.downvotes, 10)
+  end
+
+  test "should add an upvote" do
+    assert_equal(@restaurant.upvotes, 10)
+
+    @restaurant.upvotes += 1
+
+    assert_equal(@restaurant.upvotes, 11)
+  end
+
+  test "should add a downvote" do
+    assert_equal(@restaurant2.downvotes, 10)
+
+    @restaurant2.downvotes += 1
+
+    assert_equal(@restaurant2.downvotes, 11)
   end
 end
