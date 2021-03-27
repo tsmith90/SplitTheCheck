@@ -2,6 +2,7 @@ header {
   background-color: #61dbfb;
   color: white;
   margin: auto;
+  width: 80%;
   padding: 60px;
   font-size: 20px;
   text-align: center;
@@ -18,8 +19,11 @@ header {
   color: #882;
   font-weight: bold;
   margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1em 1.414em;
   text-align: center;
+  width: 80%;
 }
 
 .field {
@@ -34,4 +38,18 @@ header {
 .actions {
   padding: 10px;
   margin: 1em;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search {
+  text-align: center;
+  margin: auto;
+}
+
+.links {
+  padding: 60px;
 }

@@ -1,8 +1,11 @@
 <% if notice %>
   <br>
-  <aside id="notice"><%= notice %></aside>
+    <aside class="notice"><%= notice %></aside>
   <br>
 <% end %>
+<br>
+
+
 
 <table>
   <thead>
@@ -27,8 +30,22 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table><br><br>
+
+<div class="search">
+  <%= form_for :restaurant, url: search_path, html: {class: "form-inline"} do |f|%>
+    <div class="search-group">
+      <%= f.text_field :name, value: params[:restaurant].try(:[], :name),
+      class: 'form-control', placeholder: 'Search By Name'%>
+      <%= f.text_field :location, value: params[:restaurant].try(:[], :location),
+      class: 'form-control', placeholder: 'Search By Location'%>
+      <%=f.submit 'Search', class: 'btn btn-primary'%>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+<div class="links">
+  <%= link_to 'New Restaurant', new_restaurant_path %>
+</div>

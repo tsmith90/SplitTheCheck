@@ -6,6 +6,16 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def search
+
+      @restaurants = Restaurant.where("name like ? and location like ?",
+        "%#{params['restaurant']['name']}", "%#{params['restaurant']['location']}")
+
+    respond_to do |format|
+        format.html { render :index }
+    end
+  end
+
   # GET /restaurants/1 or /restaurants/1.json
   def show
   end
