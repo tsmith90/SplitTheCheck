@@ -19,9 +19,42 @@ class RestaurantsController < ApplicationController
   def edit
   end
 
-  # GET /restaurants/vote
-  def votes
 
+  def upvote
+    id = params[:restaurant_id]
+
+    @restaurant = Restaurant.find(id)
+
+    @restaurant[:upvotes] += 1
+
+    respond_to do |format|
+      if @restaurant.save
+        format.html { redirect_to restaurants_url, notice: "Vote successfully cast." }
+        format.json { render :show, status: :created, location: @restaurant }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+  def downvote
+    id = params[:restaurant_id]
+
+    @restaurant = Restaurant.find(id)
+
+    @restaurant[:downvotes] += 1
+
+    respond_to do |format|
+      if @restaurant.save
+        format.html { redirect_to restaurants_url, notice: "Vote successfully cast." }
+        format.json { render :show, status: :created, location: @restaurant }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /restaurants or /restaurants.json

@@ -13,14 +13,22 @@
 </p>
 
 <p>
-  <strong>Upvotes:</strong>
+  <strong>Will Split Votes:</strong>
   <%= @restaurant.upvotes %>
 </p>
 
 <p>
-  <strong>Downvotes:</strong>
+  <strong>Won't Split Votes:</strong>
   <%= @restaurant.downvotes %>
-</p>
+</p><br>
+
+<div>
+  <h2>Your Vote:</h2>
+  <p>
+    <%= link_to "<button>Will Split</button>".html_safe, upvote_path(:restaurant_id => @restaurant.id)%>
+    <%= link_to "<button>Won't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id)%>
+  </p>
+</div><br>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
