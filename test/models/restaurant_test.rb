@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class RestaurantTest < ActiveSupport::TestCase
+  fixtures :restaurants
 
   test "restaurant attributes must not be empty" do
     restaurant = Restaurant.new

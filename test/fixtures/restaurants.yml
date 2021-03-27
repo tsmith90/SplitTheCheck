@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  location: MyString
-  upvotes: 1
+  name: Outback
+  location: 123 main street
+  upvotes: 10
   downvotes: 1
 
 two:
-  name: MyString
-  location: MyString
+  name: Morton's
+  location: 321 main street
   upvotes: 1
-  downvotes: 1
+  downvotes: 10

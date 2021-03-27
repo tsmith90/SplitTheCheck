@@ -13,12 +13,14 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <br>
+    <%= form.text_field :name, size: 25 %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_area :location, id: :resturant_location, rows: 5, cols: 30 %>
+    <br>
+    <%= form.text_area :location, id: :resturant_location, rows: 10, cols: 40 %>
   </div>
 
   <div class="actions">

@@ -7,11 +7,14 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get restaurants_url
+    assert_select 'h1', 'Split The Check'
+    assert_select 'h3', 'Where should we eat next?'
     assert_response :success
   end
 
   test "should get new" do
     get new_restaurant_url
+    assert_select 'h1', 'New Restaurant'
     assert_response :success
   end
 
