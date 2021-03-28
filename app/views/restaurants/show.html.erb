@@ -14,27 +14,33 @@
     <%= @restaurant.location %>
   </p>
 
-  <p>
-    <strong>Will Split Votes:</strong>
-    <%= @restaurant.upvotes %>
-  </p>
-
-  <p>
-    <strong>Won't Split Votes:</strong>
-    <%= @restaurant.downvotes %>
-  </p><br>
-
-  <div>
-    <h2>Your Vote:</h2>
+  <% if user_signed_in? %>
     <p>
-      <%= link_to "<button>Will Split</button>".html_safe, upvote_path(:restaurant_id => @restaurant.id)%>
-      <%= link_to "<button>Won't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id)%>
+      <strong>Will Split Votes:</strong>
+      <%= @restaurant.upvotes %>
     </p>
-  </div><br>
+
+    <p>
+      <strong>Won't Split Votes:</strong>
+      <%= @restaurant.downvotes %>
+    </p><br>
+
+    <div>
+      <h2>Your Vote:</h2>
+      <p>
+        <%= link_to "<button>Will Split</button>".html_safe, upvote_path(:restaurant_id => @restaurant.id)%>
+        <%= link_to "<button>Won't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id)%>
+      </p>
+    </div><br>
+  <% else %>
+    <h4>Please log in to vote or edit this restaurant.</h4>
+  <% end %>
 
   <p>
     <%= link_to "<button>Back</button>".html_safe, restaurants_path %>
-    <%= link_to "<button>Edit</button>".html_safe, edit_restaurant_path(@restaurant) %>
+    <% if user_signed_in? %>
+      <%= link_to "<button>Edit</button>".html_safe, edit_restaurant_path(@restaurant) %>
+    <%end%>
   </p>
 
 </div>

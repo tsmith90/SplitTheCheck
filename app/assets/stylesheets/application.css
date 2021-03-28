@@ -8,6 +8,11 @@ header {
   text-align: center;
 }
 
+.user {
+  text-align: right;
+  margin: auto;
+}
+
 .rows:nth-child(odd) {
   background-color: lightblue;
 }
