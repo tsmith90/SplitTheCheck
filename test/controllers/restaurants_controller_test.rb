@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class RestaurantsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
     @restaurant = restaurants(:one)
     @restaurant2 = restaurants(:two)
@@ -14,16 +16,17 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    sign_in users(:one)
     get new_restaurant_url
     assert_select 'h1', 'New Restaurant'
     assert_response :success
   end
 
   test "should create restaurant" do
+    sign_in users(:one)
     assert_difference('Restaurant.count') do
       post restaurants_url, params: { restaurant: { downvotes: @restaurant.downvotes, location: @restaurant.location, name: @restaurant.name, upvotes: @restaurant.upvotes } }
     end
-
     assert_redirected_to restaurant_url(Restaurant.last)
   end
 
@@ -33,11 +36,13 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
+    sign_in users(:one)
     get edit_restaurant_url(@restaurant)
     assert_response :success
   end
 
   test "should update restaurant" do
+    sign_in users(:one)
     patch restaurant_url(@restaurant), params: { restaurant: { downvotes: @restaurant.downvotes, location: @restaurant.location, name: @restaurant.name, upvotes: @restaurant.upvotes } }
     assert_redirected_to restaurants_path
   end

@@ -1,25 +1,23 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show edit update ]
-
+  before_action :authenticate_user!, except: [:show, :index, :search]
+  protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token
   # GET /restaurants or /restaurants.json
   def index
     @restaurants = Restaurant.all
   end
 
   def search
-    if params[:restaurant][:name].blank?
-      redirect_to(restaurants_url, notice: "please enter a restaurant name")
-    else if params[:restaurant][:location].blank?
-      redirect_to(restaurants_url, notice: "please enter a restaurant location")
+    if params[:restaurant][:name].blank? || params[:restaurant][:location].blank?
+      redirect_to(restaurants_url, notice: "please enter a restaurant and location to search")
     else
-      @restaurants = Restaurant.where("name like ? and location like ?",
+      @restaurants = Restaurant.where("name like ? AND location like ?",
         "%#{params['restaurant']['name']}", "%#{params['restaurant']['location']}")
-
 
         respond_to do |format|
             format.html { render :index }
         end
-      end
     end
   end
 
