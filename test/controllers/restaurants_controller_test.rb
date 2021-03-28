@@ -67,4 +67,17 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal(@restaurant2.downvotes, 11)
   end
+
+  test "should search for restaurant" do
+    post search_path, params: {restaurant: {name: @restaurant.name, location: @restaurant.location}}
+    assert_response :success
+  end
+
+  test "should redirect after failed searches" do
+    post search_path, params: {restaurant: {name: @restaurant.name}}
+    assert_redirected_to restaurants_path
+
+    post search_path, params: {restaurant: {name: @restaurant.location}}
+    assert_redirected_to restaurants_path
+  end
 end

@@ -1,34 +1,40 @@
+
 <% if notice %>
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @restaurant.location %>
-</p>
-
-<p>
-  <strong>Will Split Votes:</strong>
-  <%= @restaurant.upvotes %>
-</p>
-
-<p>
-  <strong>Won't Split Votes:</strong>
-  <%= @restaurant.downvotes %>
-</p><br>
-
-<div>
-  <h2>Your Vote:</h2>
+<div class="forms">
   <p>
-    <%= link_to "<button>Will Split</button>".html_safe, upvote_path(:restaurant_id => @restaurant.id)%>
-    <%= link_to "<button>Won't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id)%>
+    <strong>Name:</strong>
+    <%= @restaurant.name %>
   </p>
-</div><br>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+  <p>
+    <strong>Location:</strong>
+    <%= @restaurant.location %>
+  </p>
+
+  <p>
+    <strong>Will Split Votes:</strong>
+    <%= @restaurant.upvotes %>
+  </p>
+
+  <p>
+    <strong>Won't Split Votes:</strong>
+    <%= @restaurant.downvotes %>
+  </p><br>
+
+  <div>
+    <h2>Your Vote:</h2>
+    <p>
+      <%= link_to "<button>Will Split</button>".html_safe, upvote_path(:restaurant_id => @restaurant.id)%>
+      <%= link_to "<button>Won't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id)%>
+    </p>
+  </div><br>
+
+  <p>
+    <%= link_to "<button>Back</button>".html_safe, restaurants_path %>
+    <%= link_to "<button>Edit</button>".html_safe, edit_restaurant_path(@restaurant) %>
+  </p>
+
+</div>

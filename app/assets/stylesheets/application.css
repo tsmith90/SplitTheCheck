@@ -51,5 +51,10 @@ table {
 }
 
 .links {
+  text-align: center;
+}
+
+.forms {
   padding: 60px;
+  text-align: center;
 }

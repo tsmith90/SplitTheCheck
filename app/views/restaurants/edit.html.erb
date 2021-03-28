@@ -1,4 +1,7 @@
-<h1>Editing Restaurant</h1>
+<div class="forms">
+  <h1>Editing Restaurant</h1>
 
-<%= render 'form', restaurant: @restaurant %>
-<%= link_to 'Cancel', restaurants_path %>
+
+  <%= render 'form', restaurant: @restaurant %>
+  <%= link_to "<button>Cancel</button>".html_safe, restaurants_path %>
+</div>

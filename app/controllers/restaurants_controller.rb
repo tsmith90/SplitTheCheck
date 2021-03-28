@@ -7,12 +7,19 @@ class RestaurantsController < ApplicationController
   end
 
   def search
-
+    if params[:restaurant][:name].blank?
+      redirect_to(restaurants_url, notice: "please enter a restaurant name")
+    else if params[:restaurant][:location].blank?
+      redirect_to(restaurants_url, notice: "please enter a restaurant location")
+    else
       @restaurants = Restaurant.where("name like ? and location like ?",
         "%#{params['restaurant']['name']}", "%#{params['restaurant']['location']}")
 
-    respond_to do |format|
-        format.html { render :index }
+
+        respond_to do |format|
+            format.html { render :index }
+        end
+      end
     end
   end
 
@@ -73,7 +80,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: "Restaurant was successfully created." }
+        format.html { redirect_to @restaurant}
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new, status: :unprocessable_entity }
