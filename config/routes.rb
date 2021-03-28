@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  devise_for :users
+  root 'restaurants#index'
   get "restaurants/upvote", as: :upvote
   get "restaurants/downvote", as: :downvote
   #post 'search' => 'restaurants#search'

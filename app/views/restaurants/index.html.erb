@@ -1,6 +1,8 @@
 <% if notice %>
   <br>
-    <aside class="notice"><%= notice %></aside>
+    <aside class="notice"><%= notice %>
+       <p class="alert"><%= alert %></p>
+    </aside>
   <br>
 <% end %>
 <br>
@@ -49,6 +51,6 @@
 <div class="links">
   <p>
   <%= link_to "<button>Back</button>".html_safe, restaurants_path %>
-  <%= link_to "<button>New Restaurant</button>".html_safe, new_restaurant_path %>  
+  <%= link_to "<button>New Restaurant</button>".html_safe, new_restaurant_path %>
   </p>
 </div>
