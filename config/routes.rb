@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :votes
   devise_for :users
   root 'restaurants#index'
   get "restaurants/upvote", as: :upvote
