@@ -61,20 +61,24 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
     assert_equal(@restaurant.upvotes, 10)
     get upvote_path(:restaurant_id => @restaurant.id)
+    @restaurant.reload
     assert_redirected_to restaurants_url
     follow_redirect!
     assert_response 200
     assert_select 'aside', "Vote successfully cast."
+    assert_equal(@restaurant.upvotes, 11)
   end
 
   test "should add a downvote" do
-    sign_in users(:one)
-    assert_equal(@restaurant2.downvotes, 10)
+    sign_in users(:two)
+    assert_equal(@restaurant2.downvotes, 5)
     get downvote_path(:restaurant_id => @restaurant2.id)
+    @restaurant2.reload
     assert_redirected_to restaurants_url
     follow_redirect!
     assert_response 200
     assert_select 'aside', "Vote successfully cast."
+    assert_equal(@restaurant2.downvotes, 6)
   end
 
   test "should search for restaurant" do

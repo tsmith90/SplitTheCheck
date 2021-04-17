@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
       else
         redirect_to(restaurants_url, notice: "That restaurant hasn't been added to our website yet.")
       end
-      
+
     end
   end
 
@@ -56,7 +56,6 @@ class RestaurantsController < ApplicationController
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def downvote
