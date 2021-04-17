@@ -15,9 +15,14 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.where("name like ? AND location like ?",
         "%#{params['restaurant']['name']}", "%#{params['restaurant']['location']}")
 
+      if @restaurants.present?
         respond_to do |format|
             format.html { render :index }
         end
+      else
+        redirect_to(restaurants_url, notice: "That restaurant hasn't been added to our website yet.")
+      end
+      
     end
   end
 
