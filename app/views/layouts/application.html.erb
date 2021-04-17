@@ -25,6 +25,14 @@
       <h3>Where should we eat next?</h3>
     </header>
 
+    <% if notice %>
+      <br>
+        <aside class="notice"><%= notice %>
+           <p class="alert"><%= alert %></p>
+        </aside>
+      <br>
+    <% end %>
+
     <main class='<%= controller.controller_name %>'>
       <%= yield %>
     </main>

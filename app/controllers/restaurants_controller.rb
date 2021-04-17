@@ -10,7 +10,7 @@ class RestaurantsController < ApplicationController
 
   def search
     if params[:restaurant][:name].blank? || params[:restaurant][:location].blank?
-      redirect_to(restaurants_url, notice: "please enter a restaurant and location to search")
+      redirect_to(restaurants_url, notice: "please enter a restaurant name and location to search")
     else
       @restaurants = Restaurant.where("name like ? AND location like ?",
         "%#{params['restaurant']['name']}", "%#{params['restaurant']['location']}")

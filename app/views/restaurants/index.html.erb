@@ -1,12 +1,3 @@
-<% if notice %>
-  <br>
-    <aside class="notice"><%= notice %>
-       <p class="alert"><%= alert %></p>
-    </aside>
-  <br>
-<% end %>
-<br>
-
 <div class="search">
   <%= form_for :restaurant, url: search_path, html: {class: "form-inline"} do |f|%>
     <div class="search-group">
@@ -22,7 +13,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name (Edit)</th>
+      <th>Name <% if user_signed_in? %>(Edit) <% end %></th>
       <th>Location</th>
       <th>Will Split Total</th>
       <th>Won't Split Total</th>
@@ -34,7 +25,11 @@
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr class="rows">
-        <td><%= link_to restaurant.name, edit_restaurant_path(restaurant) %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to restaurant.name, edit_restaurant_path(restaurant) %></td>
+        <% else %>
+        <td><%= restaurant.name %></td>
+        <% end %>
         <td><%= restaurant.location %></td>
         <td><%= restaurant.upvotes %></td>
         <td><%= restaurant.downvotes %></td>
