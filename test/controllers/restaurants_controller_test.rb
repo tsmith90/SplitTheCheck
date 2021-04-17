@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-  
+
   setup do
     @restaurant = restaurants(:one)
     @restaurant2 = restaurants(:two)
@@ -48,29 +48,33 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show upvotes" do
+    sign_in users(:one)
     assert_equal(@restaurant.upvotes, 10)
-    assert_equal(@restaurant2.upvotes, 1)
   end
 
   test "should show downvotes" do
+    sign_in users(:one)
     assert_equal(@restaurant.downvotes, 1)
-    assert_equal(@restaurant2.downvotes, 10)
   end
 
   test "should add an upvote" do
+    sign_in users(:one)
     assert_equal(@restaurant.upvotes, 10)
-
-    @restaurant.upvotes += 1
-
-    assert_equal(@restaurant.upvotes, 11)
+    get upvote_path(:restaurant_id => @restaurant.id)
+    assert_redirected_to restaurants_url
+    follow_redirect!
+    assert_response 200
+    assert_select 'aside', "Vote successfully cast."
   end
 
   test "should add a downvote" do
+    sign_in users(:one)
     assert_equal(@restaurant2.downvotes, 10)
-
-    @restaurant2.downvotes += 1
-
-    assert_equal(@restaurant2.downvotes, 11)
+    get downvote_path(:restaurant_id => @restaurant2.id)
+    assert_redirected_to restaurants_url
+    follow_redirect!
+    assert_response 200
+    assert_select 'aside', "Vote successfully cast."
   end
 
   test "should search for restaurant" do
