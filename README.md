@@ -8,3 +8,5 @@ restaurants are searchable by name and location
 allows users to create a new listing for a restaurant if does not exist
 
 Regarding voting: each restaurant will have "will split" votes and "won't split" votes. More "will split" votes means more users of the site have found that the restaurant will split than those who have experienced otherwise; this accounts for the fact that sometimes check-splitting is based more on the server and not the restaurant policy.
+
+Voting needs updated.
