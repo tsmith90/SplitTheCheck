@@ -37,7 +37,7 @@
   <% end %>
 
   <p>
-    <%= link_to "<button>Back</button>".html_safe, restaurants_path %>
+    <%= link_to "<button>Back</button>".html_safe, url_for(:back) %>
     <% if user_signed_in? %>
       <%= link_to "<button>Edit</button>".html_safe, edit_restaurant_path(@restaurant) %>
     <%end%>

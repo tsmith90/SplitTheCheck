@@ -20,7 +20,7 @@ class FavoritesControllerTest < ActionDispatch::IntegrationTest
       post favorites_url, params: { favorite: { restaurant_id: @favorite.restaurant_id, user_id: @favorite.user_id } }
     end
 
-    assert_redirected_to favorite_url(Favorite.last)
+    assert_redirected_to summary_path
   end
 
   test "should show favorite" do
@@ -43,6 +43,6 @@ class FavoritesControllerTest < ActionDispatch::IntegrationTest
       delete favorite_url(@favorite)
     end
 
-    assert_redirected_to favorites_url
+    assert_redirected_to summary_path
   end
 end

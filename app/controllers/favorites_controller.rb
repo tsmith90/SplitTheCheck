@@ -25,7 +25,7 @@ class FavoritesController < ApplicationController
 
     respond_to do |format|
       if @favorite.save
-        format.html { redirect_to @favorite, notice: "Favorite was successfully created." }
+        format.html { redirect_to summary_path, notice: "Favorite was successfully saved." }
         format.json { render :show, status: :created, location: @favorite }
       else
         format.html { render :new, status: :unprocessable_entity }

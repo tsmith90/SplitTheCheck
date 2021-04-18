@@ -66,9 +66,14 @@
 </table><br><br>
 </div>
 <% else %>
-  <h6>Please add a favorite to see your favorites list</h6>
+  <div class="forms">
+    <h3>Please add a favorite to see your favorites list</h3>
+  </div>
 <% end %>
 
-<p>
-  <%= link_to "<button>Back</button>".html_safe, url_for(:back) %>
-</p>
+<div class="forms">
+  <p>
+    <%= link_to "<button>Back</button>".html_safe, url_for(:back) %>
+    <%= link_to "<button>Index</button>".html_safe, restaurants_url %>
+  </p>
+</div>
