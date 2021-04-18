@@ -12,35 +12,42 @@
     <tbody>
 
         <tr class="rows">
-          <td>hi</td>
-          <td>hi</td>
-          <td>hi</td>
+          <td>vote here</td>
+          <td>vote here</td>
+          <td>vote here</td>
         </tr>
     </tbody>
   </table>
 </div>
 
-<div class="forms">
-  <h3>Your Comments</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Comment</th>
-        <th>Restaurant Name</th>
-        <th>Restaurant Link</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-        <tr class="rows">
-          <td>hi</td>
-          <td>hi</td>
-          <td>hi</td>
+<% if current_user.comments.count > 0 %>
+  <div class="forms">
+    <h3>Your Comments</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Restaurant Name</th>
+          <th>Comment</th>
+          <th>Restaurant Link</th>
         </tr>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+  <% current_user.comments.each do |comment| %>
+    <tr class="rows">
+      <td><%= comment.restaurant.name %></td>
+      <td><%= comment.body %></td>
+      <td><%= link_to comment.restaurant.name, comment.restaurant %></td>
+    </tr>
+  <%end%>
+  </tbody>
+  </table><br><br>
+  </div>
+<% else %>
+  <div class="forms">
+    <h3>Please write some comments to see your comments list</h3>
+  </div>
+<% end %>
+
 
 
 <% if current_user.favorites.count > 0 %>
@@ -54,15 +61,15 @@
         <th>Restaurant Link</th>
       </tr>
     </thead>
+    <tbody>
   <% current_user.favorites.each do |favorite| %>
-      <tbody>
           <tr class="rows">
             <td><%= link_to 'Remove Favorite', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <td><%= favorite.restaurant.name %></td>
             <td><%= link_to favorite.restaurant.name, favorite.restaurant %></td>
           </tr>
-      </tbody>
   <%end %>
+  </tbody>
 </table><br><br>
 </div>
 <% else %>

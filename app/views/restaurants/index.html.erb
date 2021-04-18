@@ -13,7 +13,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name <% if user_signed_in? %>(Edit) <% end %></th>
+      <th>Name <% if user_signed_in? %>(Edit / Comment) <% end %></th>
       <th>Location</th>
       <th>Will Split Total</th>
       <th>Won't Split Total</th>
@@ -35,6 +35,7 @@
         <td style= 'text-align: center'><%= restaurant.downvotes %></td>
         <% if user_signed_in? %>
           <td><%= link_to 'Vote / Favorite', restaurant %></td>
+          <td><%= link_to 'Comment', new_comment_path(:restaurant_id => restaurant.id, :user_id => current_user.id) %></td>
         <% else %>
           <td><%= link_to 'View', restaurant %></td>
         <% end %>
