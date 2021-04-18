@@ -1,25 +1,4 @@
 <div class="forms">
-  <h3>Your Votes</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Will Split / Won't Split</th>
-        <th>Restaurant Name</th>
-        <th>Restaurant Link</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-        <tr class="rows">
-          <td>vote here</td>
-          <td>vote here</td>
-          <td>vote here</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
-
 <% if current_user.comments.count > 0 %>
   <div class="forms">
     <h3>Your Comments</h3>
@@ -78,7 +57,27 @@
   </div>
 <% end %>
 
-<div class="forms">
+<h3>Your Votes</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Will Split / Won't Split</th>
+      <th>Restaurant Name</th>
+      <th>Restaurant Link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+      <tr class="rows">
+        <td>vote here</td>
+        <td>vote here</td>
+        <td>vote here</td>
+      </tr>
+  </tbody>
+</table><br><br>
+
+
   <p>
     <%= link_to "<button>Back</button>".html_safe, url_for(:back) %>
     <%= link_to "<button>Index</button>".html_safe, restaurants_url %>
