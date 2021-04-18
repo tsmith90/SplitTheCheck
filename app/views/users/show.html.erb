@@ -57,25 +57,36 @@
   </div>
 <% end %>
 
+
+
+<% if current_user.votes.count > 0 %>
 <h3>Your Votes</h3>
 <table>
   <thead>
     <tr>
-      <th>Will Split / Won't Split</th>
+      <th>Will Split</th>
+      <th>Won't Split</th>
       <th>Restaurant Name</th>
       <th>Restaurant Link</th>
     </tr>
   </thead>
 
   <tbody>
-
+    <% current_user.votes.each do |vote| %>
       <tr class="rows">
-        <td>vote here</td>
-        <td>vote here</td>
-        <td>vote here</td>
+        <td>vote.upvote</td>
+        <td>vote.downvote</td>
+        <td>vote.restaurant.name</td>
+        <td>link_to vote.restaurant.name, vote.restaurant</td>
       </tr>
+    <%end %>
   </tbody>
-</table><br><br>
+</table>
+<% else %>
+<div class="forms">
+  <h3>Please vote to see your voting history</h3>
+</div>
+<% end %><br><br>
 
 
   <p>
