@@ -34,7 +34,7 @@
         <td><%= restaurant.upvotes %></td>
         <td><%= restaurant.downvotes %></td>
         <% if user_signed_in? %>
-          <td><%= link_to 'Vote', restaurant %></td>
+          <td><%= link_to 'Vote / Favorite', restaurant %></td>
         <% else %>
           <td><%= link_to 'View', restaurant %></td>
         <% end %>

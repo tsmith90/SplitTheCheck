@@ -27,6 +27,11 @@
         <%= link_to "<button>Won't Split</button>".html_safe, downvote_path(:restaurant_id => @restaurant.id)%>
       </p>
     </div><br>
+
+    <div>
+      <h2>Make Favorite?</h2>
+      <%= button_to "Favorite", favorites_url, params: { favorite: { restaurant_id: @restaurant.id, user_id: current_user.id } }%>
+    </div><br><br>
   <% else %>
     <h4>Please log in to vote or edit this restaurant.</h4>
   <% end %>

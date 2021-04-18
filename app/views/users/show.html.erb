@@ -42,6 +42,8 @@
   </table>
 </div>
 
+
+<% if current_user.favorites.count > 0 %>
 <div class="forms">
   <h3>Your Favorites</h3>
   <table>
@@ -52,16 +54,20 @@
         <th>Restaurant Link</th>
       </tr>
     </thead>
-
-    <tbody>
-        <tr class="rows">
-          <td>hi</td>
-          <td>hi</td>
-          <td>hi</td>
-        </tr>
-    </tbody>
-  </table><br><br>
+  <% current_user.favorites.each do |favorite| %>
+      <tbody>
+          <tr class="rows">
+            <td><%= link_to 'Remove Favorite', favorite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= favorite.restaurant.name %></td>
+            <td><%= link_to favorite.restaurant.name, favorite.restaurant %></td>
+          </tr>
+      </tbody>
+  <%end %>
+</table><br><br>
 </div>
+<% else %>
+  <h6>Please add a favorite to see your favorites list</h6>
+<% end %>
 
 <p>
   <%= link_to "<button>Back</button>".html_safe, url_for(:back) %>
