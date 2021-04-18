@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   #get 'search' => 'restaurants#search'
   #get "restaurants/search", as: :search
   post "restaurants/search", as: :search
+  get "users/summary", as: :summary
   resources :restaurants, except: [:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
